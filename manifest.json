@@ -1,0 +1,9 @@
+{
+  "name": "Cadastro GELM 156/SC",
+  "short_name": "Cadastro GELM",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef2ed",
+  "theme_color": "#1f4d2e",
+  "lang": "pt-BR"
+}

@@ -2,105 +2,72 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1f4d2e"><link rel="manifest" href="manifest.json">
-<title>Cadastro GELM 156/SC</title><link rel="stylesheet" href="style.css">
+<title>Cadastro GELM — Editor estilo Canva</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-<header><div class="wolf">🐺</div><div><h1>Cadastro GELM</h1><p>Grupo Escoteiro Lobos da Montanha — 156/SC</p></div></header>
+<header><div class="logo">🐺</div><div><h1>Cadastro GELM</h1><p>Grupo Escoteiro Lobos da Montanha — 156/SC</p></div></header>
 
-<div class="steps"><div class="step active">1<br><span>Registro</span></div><div class="line"></div><div class="step">2<br><span>Ficha médica</span></div><div class="line"></div><div class="step">3<br><span>Uso de imagem</span></div></div>
-
-<form id="form">
-<section class="panel page" data-page="0">
-<h2>1. Ficha de registro individual</h2>
-<p class="notice">Os campos abaixo seguem a ficha de registro individual fornecida. Para jovens, o responsável legal é preenchido na mesma etapa.</p>
-<div class="row"><label>Tipo de cadastro<select id="tipo"><option value="jovem">Jovem / associado beneficiário</option><option value="adulto">Adulto — escotista/dirigente/colaborador</option></select></label><label>Sexo<select id="sexo"><option value="">Selecione</option><option>Masculino</option><option>Feminino</option></select></label></div>
-<div class="grid">
-<label>Nome completo<input id="nome" required></label><label>Apelido ou nome social<input id="apelido"></label><label>Estado civil<input id="estadoCivil"></label>
-<label>UF de nascimento<input id="ufNasc" maxlength="2"></label><label>Cidade de nascimento<input id="cidadeNasc"></label><label>Data de nascimento<input id="dataNasc" type="date"></label>
-<label>Escolaridade<input id="escolaridade"></label><label>Cor ou raça<input id="corRaca"></label><label>Endereço<input id="endereco"></label><label>Nº<input id="numero"></label>
-<label>Complemento<input id="complemento"></label><label>Bairro<input id="bairro"></label><label>Cidade<input id="cidade"></label>
-<label>UF<input id="uf" maxlength="2"></label><label>CEP<input id="cep"></label><label>Telefone residencial<input id="telResid"></label><label>Telefone celular<input id="telCel"></label><label>Profissão<input id="profissao"></label>
-<label>É estrangeiro?<select id="estrangeiro"><option value="">Selecione</option><option>Não</option><option>Sim</option></select></label><label>País de nascimento<input id="paisNasc"></label>
-<label>E-mail<input id="email" type="email"></label><label>Local de trabalho<input id="localTrabalho"></label>
-<label>RG<input id="rg"></label><label>Órgão expedidor<input id="orgaoRG"></label><label>CPF<input id="cpf"></label><label>Clube de serviço<input id="clubeServico"></label><label>Religião<input id="religiao"></label>
+<div class="topbar">
+  <div class="steps">
+    <button data-step="1" class="active">1 Registro</button>
+    <button data-step="2">2 Ficha médica</button>
+    <button data-step="3">3 Uso de imagem</button>
+    <button data-step="4">4 Gerar</button>
+  </div>
+  <div class="toolbar">
+    <button id="toggleEdit">🎨 Ajustar campos</button>
+    <button id="saveData">💾 Salvar</button>
+    <button id="clearData">🗑 Limpar</button>
+  </div>
 </div>
 
-<div id="responsavelBox">
-<h3>Responsável legal e associado contribuinte</h3>
+<section id="formPanel">
+<div id="p1" class="panel">
+<h2>Ficha de registro</h2><p class="hint">Preencha os dados. No lado direito, o formulário original aparece como uma tela estilo Canva. Em <b>Ajustar campos</b>, cada campo pode ser arrastado.</p>
 <div class="grid">
-<label>Nome completo do responsável<input id="respNome"></label><label>Sexo<select id="respSexo"><option value="">Selecione</option><option>Masculino</option><option>Feminino</option></select></label>
-<label>Parentesco<select id="parentesco"><option value="">Selecione</option><option>Mãe</option><option>Pai</option><option>Tutor</option></select></label>
-<label>É estrangeiro?<select id="respEstrangeiro"><option value="">Selecione</option><option>Não</option><option>Sim</option></select></label><label>País de nascimento<input id="respPaisNasc"></label><label>Estado civil<input id="respEstadoCivil"></label>
-<label>Cidade de nascimento<input id="respCidadeNasc"></label><label>UF de nascimento<input id="respUfNasc" maxlength="2"></label><label>Nascimento<input id="respDataNasc" type="date"></label>
-<label>Escolaridade<input id="respEscolaridade"></label><label>Cor ou raça<input id="respCorRaca"></label><label>Endereço<input id="respEndereco"></label><label>Nº<input id="respNumero"></label>
-<label>Complemento<input id="respComplemento"></label><label>Bairro<input id="respBairro"></label><label>Cidade<input id="respCidade"></label>
-<label>UF<input id="respUf" maxlength="2"></label><label>CEP<input id="respCep"></label><label>Telefone residencial<input id="respTelResid"></label><label>Telefone celular<input id="respTelCel"></label><label>Profissão<input id="respProfissao"></label>
-<label>E-mail<input id="respEmail"></label><label>Local de trabalho<input id="respLocalTrabalho"></label><label>RG<input id="respRg"></label><label>Órgão expedidor<input id="respOrgaoRG"></label><label>CPF<input id="respCpf"></label>
+<label>Tipo<select id="tipo"><option value="jovem">Jovem / beneficiário</option><option value="adulto">Adulto</option></select></label>
+<label>Nome completo*<input id="nome"></label><label>Sexo<input id="sexo"></label><label>Apelido/nome social<input id="apelido"></label><label>Estado civil<input id="estadoCivil"></label>
+<label>UF nascimento<input id="ufNasc"></label><label>Cidade nascimento<input id="cidadeNasc"></label><label>Data nascimento<input id="dataNasc" type="date"></label><label>Escolaridade<input id="escolaridade"></label><label>Cor/raça<input id="corRaca"></label>
+<label>Endereço<input id="endereco"></label><label>Nº<input id="numero"></label><label>Complemento<input id="complemento"></label><label>Bairro<input id="bairro"></label><label>Cidade<input id="cidade"></label><label>UF<input id="uf"></label><label>CEP<input id="cep"></label>
+<label>Telefone residencial<input id="telResid"></label><label>Celular<input id="telCel"></label><label>Profissão<input id="profissao"></label><label>Estrangeiro<input id="estrangeiro"></label><label>País nascimento<input id="paisNasc"></label>
+<label>E-mail<input id="email"></label><label>Local trabalho<input id="localTrabalho"></label><label>RG<input id="rg"></label><label>Órgão expedidor<input id="orgaoRG"></label><label>CPF<input id="cpf"></label><label>Clube de serviço<input id="clubeServico"></label><label>Religião<input id="religiao"></label>
+</div>
+<div id="responsavel">
+<h3>Responsável legal / contribuinte</h3><div class="grid">
+<label>Nome<input id="respNome"></label><label>Sexo<input id="respSexo"></label><label>Parentesco<input id="parentesco"></label><label>Estrangeiro<input id="respEstrangeiro"></label><label>País nascimento<input id="respPaisNasc"></label><label>Estado civil<input id="respEstadoCivil"></label><label>Cidade nascimento<input id="respCidadeNasc"></label><label>UF nascimento<input id="respUfNasc"></label><label>Data nascimento<input id="respDataNasc" type="date"></label><label>Escolaridade<input id="respEscolaridade"></label><label>Cor/raça<input id="respCorRaca"></label><label>Endereço<input id="respEndereco"></label><label>Nº<input id="respNumero"></label><label>Complemento<input id="respComplemento"></label><label>Bairro<input id="respBairro"></label><label>Cidade<input id="respCidade"></label><label>UF<input id="respUf"></label><label>CEP<input id="respCep"></label><label>Telefone residencial<input id="respTelResid"></label><label>Celular<input id="respTelCel"></label><label>Profissão<input id="respProfissao"></label><label>E-mail<input id="respEmail"></label><label>Local trabalho<input id="respLocalTrabalho"></label><label>RG<input id="respRg"></label><label>Órgão expedidor<input id="respOrgaoRG"></label><label>CPF<input id="respCpf"></label>
 </div></div>
-</section>
+</div>
 
-<section class="panel page hidden" data-page="1">
-<h2>2. Ficha médica</h2>
-<p class="notice danger">Esta etapa contém dados de saúde. Eles são usados somente para preencher a ficha e não são enviados para um servidor por esta aplicação.</p>
+<div id="p2" class="panel hidden"><h2>Ficha médica</h2><p class="hint">Campos médicos também são independentes. A prévia mostra as duas páginas do modelo.</p>
 <div class="grid">
-<label>Registro<input id="registro"></label><label>Altura (m)<input id="altura"></label><label>Peso (kg)<input id="peso"></label><label>Tipo sanguíneo<input id="tipoSang"></label><label>Fator RH<input id="rh"></label>
-<label>Avisar em emergências — telefone<input id="emergTel"></label><label>Médico de preferência<input id="medico"></label><label>Telefone médico<input id="medicoTel"></label>
-<label>Convênio<input id="convenio"></label><label>Plano de saúde<input id="plano"></label><label>Número do documento<input id="docPlano"></label>
+<label>Registro<input id="registro"></label><label>Altura<input id="altura"></label><label>Peso<input id="peso"></label><label>Tipo sanguíneo<input id="tipoSang"></label><label>Fator RH<input id="rh"></label>
+<label>Emergência<input id="emergencia" value="Aguardar Pais/Responsáveis"></label><label>Permite medicação<input id="permiteMedicacao"></label><label>Autonomia de medicação<input id="autonomiaMedicacao"></label><label>Avisar<input id="avisar"></label><label>Telefone emergência<input id="emergTel"></label><label>Outro contato<input id="outroEmergencia"></label>
+<label>Convênio<input id="convenio"></label><label>Plano<input id="plano"></label><label>Nº documento<input id="docPlano"></label><label>Médico preferência<input id="medico"></label><label>Telefone médico<input id="medicoTel"></label>
+<label>Sabe nadar<input id="sabeNadar"></label><label>Sonâmbulo<input id="sonambulo"></label><label>Impedimento físico<input id="impFisico"></label><label>Restrição alimentar<input id="restrAlim"></label>
+<label>Picada inseto<input id="alergInseto"></label><label>Plantas<input id="alergPlantas"></label><label>Ácaros/tapetes<input id="alergAcaros"></label><label>Fungos<input id="alergFungos"></label><label>Medicamentos<input id="alergMed"></label><label>Outro<input id="alergOutro"></label><label>Alimentos<input id="alergAlim"></label>
+<label>Óculos<input id="oculos"></label><label>Lentes<input id="lentes"></label><label>Aparelho dentário<input id="apDent"></label><label>Sonda<input id="sonda"></label><label>Marca-passo<input id="marcapasso"></label><label>Aparelho audição<input id="audicao"></label><label>Bomba insulina<input id="bomba"></label><label>Outros auxílio<input id="auxOutro"></label>
+<label>Asma/bronquite<input id="asma"></label><label>Rinite/sinusite<input id="rinite"></label><label>Hipertensão<input id="hipertensao"></label><label>Diabetes<input id="diabetes"></label><label>Convulsões/epilepsia<input id="convulsoes"></label><label>Dermatológicos<input id="dermat"></label><label>Cardíacos<input id="cardiacos"></label><label>Reumatológicos<input id="reumato"></label><label>Hematológicos<input id="hemato"></label><label>Outros problemas<input id="outrosProb"></label><label>Acompanhamento médico<input id="acompMed"></label>
+<label>Deficiência física<input id="defFisica"></label><label>Visual<input id="defVisual"></label><label>Auditiva<input id="defAuditiva"></label><label>Intelectual<input id="defIntelectual"></label><label>Autismo<input id="autismo"></label>
+<label>Transtorno<input id="transtorno"></label><label>Medicação transtorno<input id="medTranstorno"></label><label>Psicólogo<input id="psicologo"></label><label>Médico<input id="medicoAcomp"></label><label>Outro profissional<input id="outroProf"></label>
+<label>Agride a si<input id="agrideSi"></label><label>Agride outros<input id="agrideOutros"></label><label>Agitação<input id="agitacao"></label><label>Desobedece instruções<input id="desobediencia"></label><label>Fugas<input id="fugas"></label><label>Autodestrutivo<input id="autodestrutivo"></label><label>Ansiedade/pânico<input id="ansiedade"></label><label>Comunicação<input id="comunicacao"></label><label>Alimentares<input id="alimentar"></label><label>Sono<input id="sono"></label>
 </div>
-<h3>Informações e alergias</h3>
-<div class="checks">
-<label><input type="checkbox" id="sabeNadar"> Sabe nadar</label><label><input type="checkbox" id="sonambulo"> Sonâmbulo</label>
-<label><input type="checkbox" id="impFisico"> Impedimento físico</label><label><input type="checkbox" id="restrAlim"> Restrição alimentar</label>
-<label><input type="checkbox" id="alergInseto"> Picada de inseto</label><label><input type="checkbox" id="alergPlantas"> Plantas</label>
-<label><input type="checkbox" id="alergAcaros"> Ácaros / tapetes</label><label><input type="checkbox" id="alergFungos"> Fungos</label>
-<label><input type="checkbox" id="alergMed"> Medicamentos</label><label><input type="checkbox" id="alergOutro"> Outro</label><label><input type="checkbox" id="alergAlim"> Alimentos</label>
-<label><input type="checkbox" id="oculos"> Óculos</label><label><input type="checkbox" id="lentes"> Lentes de contato</label><label><input type="checkbox" id="apDent"> Aparelho dentário</label><label><input type="checkbox" id="sonda"> Sonda</label><label><input type="checkbox" id="marcapasso"> Marca-passo</label><label><input type="checkbox" id="audicao"> Aparelho de audição</label><label><input type="checkbox" id="bomba"> Bomba de insulina</label><label><input type="checkbox" id="auxOutro"> Outros</label>
+<label>Observações<textarea id="observacoes"></textarea></label>
 </div>
-<div class="grid"><label>Impedimento físico — cite<input id="impFisicoTxt"></label><label>Restrição alimentar — cite<input id="restrAlimTxt"></label><label>Alergias / detalhes<input id="alergiasTxt"></label><label>Auxílios — outros<input id="auxOutroTxt"></label></div>
-<h3>Saúde física</h3>
-<div class="checks">
-<label><input type="checkbox" id="asma"> Asma ou bronquite</label><label><input type="checkbox" id="rinite"> Rinite ou sinusite</label><label><input type="checkbox" id="hipertensao"> Hipertensão</label><label><input type="checkbox" id="diabetes"> Diabetes</label>
-<label><input type="checkbox" id="convulsoes"> Convulsões ou epilepsia</label><label><input type="checkbox" id="dermat"> Problemas dermatológicos</label><label><input type="checkbox" id="cardiacos"> Problemas cardíacos</label><label><input type="checkbox" id="reumato"> Problemas reumatológicos</label><label><input type="checkbox" id="hemato"> Problemas hematológicos</label><label><input type="checkbox" id="outrosProb"> Outros problemas</label><label><input type="checkbox" id="acompMed"> Faz acompanhamento médico regular?</label>
-</div>
-<div class="grid"><label>Outros problemas — cite<input id="outrosProbTxt"></label><label>Acompanhamento médico — cite<input id="acompMedTxt"></label></div>
-<h3>Deficiências</h3>
-<div class="checks"><label><input type="checkbox" id="defFisica"> Física</label><label><input type="checkbox" id="defVisual"> Visual</label><label><input type="checkbox" id="defAuditiva"> Auditiva</label><label><input type="checkbox" id="defIntelectual"> Intelectual</label><label><input type="checkbox" id="autismo"> Autismo</label></div>
-<div class="grid"><label>Deficiências — detalhes<input id="defTxt"></label></div>
-<h3>Medicamentos</h3>
-<div class="meds">
-<div><input id="med1" placeholder="Nome do medicamento"><input id="uso1" placeholder="Uso contínuo"><input id="info1" placeholder="Informações"></div>
-<div><input id="med2"><input id="uso2"><input id="info2"></div>
-<div><input id="med3"><input id="uso3"><input id="info3"></div>
-<div><input id="med4"><input id="uso4"><input id="info4"></div>
-<div><input id="med5"><input id="uso5"><input id="info5"></div>
-</div>
-<h3>Saúde mental e comportamento</h3>
-<div class="checks">
-<label><input type="checkbox" id="transtorno"> Apresenta algum transtorno</label><label><input type="checkbox" id="medTranstorno"> Faz uso de medicação para este transtorno</label><label><input type="checkbox" id="psicologo"> Acompanhamento com psicólogo</label><label><input type="checkbox" id="medicoAcomp"> Acompanhamento com médico</label><label><input type="checkbox" id="outroProf"> Acompanhamento com outro profissional</label>
-<label><input type="checkbox" id="agrideSi"> Crises de explosão em que agrida a si mesmo</label><label><input type="checkbox" id="agrideOutros"> Crises de explosão em que agrida os outros</label><label><input type="checkbox" id="agitacao"> Agitação psicomotora que atrapalhe a concentração</label><label><input type="checkbox" id="desobediencia"> Dificuldade de obedecer instruções verbais</label><label><input type="checkbox" id="fugas"> Tendência a fugas</label><label><input type="checkbox" id="autodestrutivo"> Comportamento auto-destrutivo</label><label><input type="checkbox" id="ansiedade"> Crises de ansiedade ou pânico</label><label><input type="checkbox" id="comunicacao"> Dificuldade de comunicação com outras pessoas</label><label><input type="checkbox" id="alimentar"> Dificuldades alimentares</label><label><input type="checkbox" id="sono"> Dificuldades de sono</label>
-</div>
-<div class="grid"><label>Saúde mental / acompanhamentos — cite<textarea id="saudeMentalTxt"></textarea></label><label>Dados comportamentais — cite<textarea id="comportTxt"></textarea></label><label>Observações<textarea id="observacoes"></textarea></label></div>
+
+<div id="p3" class="panel hidden"><h2>Autorização de imagem</h2><div class="grid"><label>Nome do menor<input id="imgNome"></label><label>Data nascimento<input id="imgData" type="date"></label><label>CPF<input id="imgCpf"></label><label>RG<input id="imgRg"></label><label>Responsável<input id="imgResp"></label><label>CPF responsável<input id="imgRespCpf"></label><label>RG responsável<input id="imgRespRg"></label><label>Local e data<input id="imgLocalData" value="Nova Trento - SC"></label></div><div class="notice">Para adultos, não usamos este documento: o modelo enviado é uma autorização de criança/adolescente.</div></div>
+
+<div id="p4" class="panel hidden"><h2>Gerar documentos</h2><p>O documento será montado usando o modelo original e a posição visual dos campos.</p><button class="primary" id="generate">Gerar PDFs</button><div id="result"></div></div>
 </section>
 
-<section class="panel page hidden" data-page="2">
-<h2>3. Autorização de uso de imagem</h2>
-<p class="notice">A autorização fornecida é específica para <strong>criança e adolescente</strong> e utiliza o documento do GELM enviado. Para adulto, este modelo não deve ser utilizado sem um instrumento específico.</p>
-<div id="imageForm">
-<div class="grid">
-<label>Nome do(a) menor<input id="imgNome"></label><label>Data de nascimento<input id="imgData" type="date"></label><label>CPF<input id="imgCpf"></label><label>RG<input id="imgRg"></label>
-<label>Nome do responsável legal<input id="imgResp"></label><label>CPF do responsável<input id="imgRespCpf"></label><label>RG do responsável<input id="imgRespRg"></label>
-<label>Local e data<input id="imgLocalData" placeholder="Nova Trento - SC, ____/____/______"></label>
-</div>
-<div class="signature"><p>As assinaturas permanecem para preenchimento manual ou assinatura eletrônica.</p></div>
-</div>
+<section class="editor">
+<div class="editorHead"><b>Prévia estilo Canva</b><span id="pageInfo"></span><button id="prev">◀</button><button id="next">▶</button></div>
+<div id="canvasWrap"><canvas id="pageCanvas"></canvas><div id="fieldsLayer"></div></div>
+<p class="hint">Ative <b>Ajustar campos</b> e arraste qualquer texto na prévia. A posição fica salva no navegador e será usada na geração do PDF.</p>
 </section>
-
-<div class="nav"><button type="button" id="prev" class="secondary">Voltar</button><button type="button" id="next">Próximo</button><button type="button" id="generate" class="hidden">Gerar documentos PDF</button></div>
-</form>
-<footer>GELM 156/SC • Processamento local no navegador</footer>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="app.js"></script>
 </body></html>

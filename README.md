@@ -1,31 +1,26 @@
-# Sistema de Cadastro GELM 156/SC
+# Cadastro GELM V3 — editor estilo Canva
 
-Este protótipo usa como modelos os três PDFs fornecidos pelo Grupo Escoteiro Lobos da Montanha:
-1. Ficha de registro individual;
-2. Ficha médica (2 páginas);
-3. Autorização de uso de imagem, voz e dados de criança e adolescente (2 páginas).
+Esta versão muda a estratégia de preenchimento.
 
-O navegador preenche os campos sobre os PDFs originais e gera:
-- três PDFs separados;
-- um PDF único com as 5 páginas.
+Em vez de tentar adivinhar uma coordenada fixa para cada campo, os PDFs originais continuam como fundo e cada dado é um **elemento independente**, como em um editor de design:
 
-## Fluxo
-Registro -> Ficha médica -> Autorização de imagem.
+- cada campo aparece na prévia;
+- "Ajustar campos" permite arrastar qualquer campo;
+- a posição fica salva no navegador;
+- a mesma posição é usada ao gerar o PDF;
+- os PDFs originais continuam sendo usados como modelos;
+- o cadastro de jovem/adulto permanece separado do gerador de certificados.
 
-Os dados básicos são reaproveitados automaticamente na etapa seguinte.
+Isso permite calibrar o formulário visualmente uma vez e depois usar a mesma configuração.
 
-## Importante sobre adultos
-A ficha de registro enviada é identificada como "ASSOCIADO BENEFICIÁRIO" e a autorização de imagem enviada é expressamente para "CRIANÇA E ADOLESCENTE". Portanto, o sistema aceita o perfil adulto para coleta dos dados, mas a autorização de imagem não deve ser tratada como instrumento adequado para adulto sem um modelo específico do grupo.
+## Como usar
 
-## Privacidade
-O protótipo não envia os dados do formulário para um servidor. Os PDFs são gerados localmente no navegador. Como a ficha médica contém dados sensíveis, não há armazenamento automático em localStorage.
+1. Abra `index.html`.
+2. Preencha os dados.
+3. Veja a prévia.
+4. Clique em **🎨 Ajustar campos**.
+5. Arraste os campos para o local exato do formulário.
+6. Clique em **💾 Salvar**.
+7. Vá para "Gerar" e gere os PDFs.
 
-## Ajuste fino
-As coordenadas dos textos estão em `app.js`. Como os PDFs originais são mantidos como fundo, basta ajustar as coordenadas para deixar cada campo exatamente sobre a linha correspondente.
-
-## Publicação
-Pode ser publicado no GitHub Pages. Para uso offline real, recomenda-se futuramente incluir uma cópia local do PDF-Lib e ampliar o service worker para armazenar os modelos.
-
-
-### V2 — correção de preenchimento
-Os PDFs originais continuam sendo usados como fundo. A rotina de preenchimento foi recalibrada para A4 (595,28 × 841,89 pt), com redução automática da fonte para campos longos e preenchimento textual dos campos da ficha médica, evitando que informações fiquem fora da página.
+Os dados ficam apenas no `localStorage` do navegador nesta versão.

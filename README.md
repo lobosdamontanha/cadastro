@@ -25,3 +25,7 @@ As coordenadas dos textos estão em `app.js`. Como os PDFs originais são mantid
 
 ## Publicação
 Pode ser publicado no GitHub Pages. Para uso offline real, recomenda-se futuramente incluir uma cópia local do PDF-Lib e ampliar o service worker para armazenar os modelos.
+
+
+### V2 — correção de preenchimento
+Os PDFs originais continuam sendo usados como fundo. A rotina de preenchimento foi recalibrada para A4 (595,28 × 841,89 pt), com redução automática da fonte para campos longos e preenchimento textual dos campos da ficha médica, evitando que informações fiquem fora da página.
